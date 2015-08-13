@@ -33,7 +33,7 @@ var NavigationComponent = React.createClass({
 
         self.updatePageNameHandler(menuObject.menuText);
 
-        self.replaceState({
+        self.setState({
             items: newItems
         });
     },
