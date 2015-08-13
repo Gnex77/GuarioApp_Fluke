@@ -6,7 +6,6 @@ module.exports = {
   addUser: function addUser(user) {
     var currentUserData = JSON.parse(localStorage.getItem('users'));
     currentUserData.push(user);
-    // localStorage.clear();
     localStorage.setItem('users', JSON.stringify(currentUserData));
   }
 };
