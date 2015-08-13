@@ -3,21 +3,11 @@
 var React = require('react/addons');
 var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
-//var Actions = require('actions/xxx')
-
-
-
 var ListViewComponent = React.createClass({
   mixins: [PureRenderMixin],
   getInitialState: function() {
     return {};
   },
-  getDefaultProps: function() {},
-  componentWillMount: function() {},
-  componentDidMount: function() {},
-  componentDidUpdate: function() {},
-  componentWillUnmount: function() {},
-
   render: function () {
     var list = this.props.list.map(function (item, index) {
       return <li key={index}>{item}</li>;

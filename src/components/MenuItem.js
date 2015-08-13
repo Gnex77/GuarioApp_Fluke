@@ -1,14 +1,11 @@
 'use strict';
 
 var React = require('react/addons');
-
-//var Actions = require('actions/xxx')
-
-
+var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 var MenuItem = React.createClass({
-  mixins: [],
-  clickHandler: function clickHandler() {
+  mixins: [PureRenderMixin],
+  _clickHandler: function _clickHandler() {
     // e.preventDefault();
     this.props.onMenuItemClick();
   },
@@ -25,10 +22,10 @@ var MenuItem = React.createClass({
   render: function () {
     var self = this,
       classes = 'fa fa-fw fa-lg ' + this.props.iconClass,
-      activeClass = this.props.isActive ? 'active' : '';
+      activeClass = self.props.isActive ? 'active' : '';
 
     return (
-        <li className={activeClass}><a href="#" onClick={self.clickHandler.bind(self, event)}><i className={classes}></i> {this.props.menuText}</a></li>
+        <li className={activeClass}><a href="#" onClick={self._clickHandler.bind(self, event)}><i className={classes}></i> {self.props.menuText}</a></li>
       );
   }
 });
