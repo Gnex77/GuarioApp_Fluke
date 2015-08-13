@@ -6,6 +6,7 @@ var React = require('react/addons'),
   UserData = require('../utils/UserData'),
   PureRenderMixin = require('react/addons').addons.PureRenderMixin,
   AddUserComponent = require('./AddUserComponent'),
+  AddUserButtonComponent = require('./AddUserButtonComponent'),
   UserAPI = require('../utils/UserAPI');
 
 // CSS
@@ -48,10 +49,14 @@ var GuarioApp = React.createClass({
       displayList: list,
       pageName: pageName
     });
-
+  },
+  _isButtonDisabled: function _isButtonDisabled() {
+    return this.state.pageName !== 'Users';
   },
   render: function() {
-    var self = this;
+    var self = this,
+      isDisabled = self._isButtonDisabled();
+
     return (
       <div className="wrapper">
         <div className="container-fluid">
@@ -59,9 +64,7 @@ var GuarioApp = React.createClass({
               <NavigationComponent onPageNameChange={self._pageNameUpdate} />
             <div className="col-sm-9 col-md-10 main">
               <ListViewComponent list={self.state.displayList} pageName={self.state.pageName} />
-              <div className="fab-create">
-                <button disabled={self.state.pageName !== 'Users'} className="btn btn-success fab-btn" type="button" name="button" onClick={self._openModal}><i className="fa fa-plus fa-2x"></i></button>
-              </div>
+              <AddUserButtonComponent isDisabled={isDisabled} clickHandler={self._openModal} />
             </div>
           </div>
           <AddUserComponent showModal={self.state.showModal} closeModal={self._closeModal} addUser={self._addUser} />
