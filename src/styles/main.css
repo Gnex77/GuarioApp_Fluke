@@ -51,9 +51,8 @@
   padding: 10px;
   position: relative;
 }
-
 .list-view {
-  margin-top: 65px;
+  margin-top: 25px;
   border: 1px solid #000;
   min-height: 100%;
 }
@@ -78,6 +77,11 @@
   text-align: center;
   line-height: 1.33;
   border-radius: 25px;
+  border-color: transparent;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.fab-btn[disabled] {
   border-color: transparent;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
