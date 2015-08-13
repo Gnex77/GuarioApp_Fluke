@@ -5,7 +5,7 @@ var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 //var Actions = require('actions/xxx')
 
-require('styles/ListViewComponent.scss');
+
 
 var ListViewComponent = React.createClass({
   mixins: [PureRenderMixin],

@@ -6,7 +6,7 @@ var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
 //var Actions = require('actions/xxx')
 
-require('styles/NavigationComponent.scss');
+
 
 var NavigationComponent = React.createClass({
     mixins: [PureRenderMixin],

@@ -4,7 +4,7 @@ var React = require('react/addons');
 
 //var Actions = require('actions/xxx')
 
-require('styles/MenuItem.scss');
+
 
 var MenuItem = React.createClass({
   mixins: [],
@@ -28,7 +28,7 @@ var MenuItem = React.createClass({
       activeClass = this.props.isActive ? 'active' : '';
 
     return (
-        <li onClick={self.clickHandler.bind(self, event)} className={activeClass}><a href="#"><i className={classes}></i> {this.props.menuText}</a></li>
+        <li className={activeClass}><a href="#" onClick={self.clickHandler.bind(self, event)}><i className={classes}></i> {this.props.menuText}</a></li>
       );
   }
 });
