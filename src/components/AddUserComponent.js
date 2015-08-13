@@ -17,25 +17,22 @@ var AddUserComponent = React.createClass({
       closeModal = self.props.closeModal;
     return (
       <Modal show={showModal} onHide={closeModal}>
-        <form onSubmit={self._addUserClickHandler}>
           <Modal.Header closeButton>
             <Modal.Title>Add User</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-              <div className="form-group">
-                <label htmlFor="firstName">First Name</label>
-                <input type="text" className="form-control" id="firstName" placeholder="First Name" ref="firstName" />
-              </div>
-              <div className="form-group">
-                <label htmlFor="lastName">Last Name</label>
-                <input type="text" className="form-control" id="lastName" placeholder="Last Name" ref="lastName" />
-              </div>
-
+            <div className="form-group">
+              <label htmlFor="firstName">First Name</label>
+              <input type="text" className="form-control" id="firstName" placeholder="First Name" ref="firstName" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="lastName">Last Name</label>
+              <input type="text" className="form-control" id="lastName" placeholder="Last Name" ref="lastName" />
+            </div>
           </Modal.Body>
           <Modal.Footer>
-            <button className="btn btn-primary" type="submit" name="button"><i className="fa fa-check"></i> Submit</button>
+            <button className="btn btn-primary" type="button" name="button" onClick={self._addUserClickHandler}><i className="fa fa-check"></i> Submit</button>
           </Modal.Footer>
-        </form>
         </Modal>
       );
   }
