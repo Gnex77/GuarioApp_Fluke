@@ -50,6 +50,8 @@
 .main {
   padding: 10px;
   position: relative;
+  max-height: 480px;
+  overflow-y: auto;
 }
 .list-view {
   margin-top: 25px;

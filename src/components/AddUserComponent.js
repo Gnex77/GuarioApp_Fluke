@@ -9,7 +9,7 @@ var AddUserComponent = React.createClass({
     var fName = React.findDOMNode(this.refs.firstName).value.trim(),
       lName = React.findDOMNode(this.refs.lastName).value.trim();
 
-      this.props.addUser(fName, lName);
+    this.props.addUser(fName, lName);
   },
   render: function () {
     var self = this,
@@ -17,24 +17,24 @@ var AddUserComponent = React.createClass({
       closeModal = self.props.closeModal;
     return (
       <Modal show={showModal} onHide={closeModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>Add User</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <div className="form-group">
-              <label htmlFor="firstName">First Name</label>
-              <input type="text" className="form-control" id="firstName" placeholder="First Name" ref="firstName" />
-            </div>
-            <div className="form-group">
-              <label htmlFor="lastName">Last Name</label>
-              <input type="text" className="form-control" id="lastName" placeholder="Last Name" ref="lastName" />
-            </div>
-          </Modal.Body>
-          <Modal.Footer>
-            <button className="btn btn-primary" type="button" name="button" onClick={self._addUserClickHandler}><i className="fa fa-check"></i> Submit</button>
-          </Modal.Footer>
-        </Modal>
-      );
+        <Modal.Header closeButton>
+          <Modal.Title>Add User</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="form-group">
+            <label htmlFor="firstName">First Name</label>
+            <input type="text" className="form-control" id="firstName" placeholder="First Name" ref="firstName" />
+          </div>
+          <div className="form-group">
+            <label htmlFor="lastName">Last Name</label>
+            <input type="text" className="form-control" id="lastName" placeholder="Last Name" ref="lastName" />
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <button className="btn btn-primary" type="button" name="button" onClick={self._addUserClickHandler}><i className="fa fa-check"></i> Submit</button>
+        </Modal.Footer>
+      </Modal>
+    );
   }
 });
 
