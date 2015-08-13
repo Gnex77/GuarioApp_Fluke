@@ -11,4 +11,4 @@ Instructions
 
 4. To run in dev mode execute ```grunt serve```
 
-5. To run in production mode execture ```grunt serve:dist```
+5. To run in production mode exectute ```grunt serve:dist```
