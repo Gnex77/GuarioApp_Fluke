@@ -4,10 +4,6 @@ var React = require('react/addons');
 var MenuItem = require('./MenuItem');
 var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 
-//var Actions = require('actions/xxx')
-
-
-
 var NavigationComponent = React.createClass({
     mixins: [PureRenderMixin],
     menuItems: [
@@ -21,17 +17,17 @@ var NavigationComponent = React.createClass({
             isActive: false
         }
     ],
-    updatePageNameHandler: function updatePageNameHandler(menuText) {
+    _updatePageNameHandler: function _updatePageNameHandler(menuText) {
       this.props.onPageNameChange(menuText);
     },
-    menuItemClickHandler: function menuItemClickHandler(menuObject) {
+    _menuItemClickHandler: function _menuItemClickHandler(menuObject) {
         var self = this,
           newItems = self.state.items.map(function(item, index) {
             item.isActive = (menuObject.index === index) ? true : false;
             return item;
           });
 
-        self.updatePageNameHandler(menuObject.menuText);
+        self._updatePageNameHandler(menuObject.menuText);
 
         self.setState({
             items: newItems
@@ -42,20 +38,15 @@ var NavigationComponent = React.createClass({
             items: this.menuItems
         };
     },
-    getDefaultProps: function() {},
-    componentWillMount: function() {},
-    componentDidMount: function() {},
-    componentDidUpdate: function() {},
-    componentWillUnmount: function() {},
 
     render: function() {
         var self = this,
-            items = this.state.items.map(function(item, index) {
+            items = self.state.items.map(function(item, index) {
               var menuObject = {
                 index: index,
                 menuText: item.menuText
               };
-                return <MenuItem iconClass={item.iconClass} isActive={item.isActive} key={index} menuText={item.menuText} onMenuItemClick={self.menuItemClickHandler.bind(self, menuObject)}/>;
+                return <MenuItem iconClass={item.iconClass} isActive={item.isActive} key={index} menuText={item.menuText} onMenuItemClick={self._menuItemClickHandler.bind(self, menuObject)}/>;
             });
         return (
           <div className="col-sm-3 col-md-2 sidebar">
