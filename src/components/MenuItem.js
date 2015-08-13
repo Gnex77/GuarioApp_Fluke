@@ -12,12 +12,6 @@ var MenuItem = React.createClass({
   getInitialState: function() {
     return {};
   },
-  // getDefaultProps: function() {},
-  // componentWillMount: function() {},
-  // componentDidMount: function() {},
-  // shouldComponentUpdate: function() {},
-  // componentDidUpdate: function() {},
-  // componentWillUnmount: function() {},
 
   render: function () {
     var self = this,
