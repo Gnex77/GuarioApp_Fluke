@@ -4,8 +4,8 @@ var React = require('react/addons'),
   NavigationComponent = require('./NavigationComponent'),
   ListViewComponent = require('./ListViewComponent'),
   UserData = require('../utils/UserData'),
-  Modal = require('react-bootstrap').Modal,
   PureRenderMixin = require('react/addons').addons.PureRenderMixin,
+  AddUserComponent = require('./AddUserComponent'),
   UserAPI = require('../utils/UserAPI');
 
 // CSS
@@ -24,18 +24,14 @@ var GuarioApp = React.createClass({
       pageName: 'Users'
     };
   },
-  closeModal: function closeModal() {
-    React.findDOMNode(this.refs.firstName).value = '';
-    React.findDOMNode(this.refs.lastName).value = '';
+  _closeModal: function _closeModal() {
     this.setState({showModal: false});
   },
-  openModal: function openModal() {
+  _openModal: function _openModal() {
     this.setState({showModal: true});
   },
-  addUser: function addUser() {
-    var fName = React.findDOMNode(this.refs.firstName).value.trim(),
-      lName = React.findDOMNode(this.refs.lastName).value.trim(),
-      user = lName + ', ' + fName;
+  _addUser: function _addUser(fName, lName) {
+    var user = lName + ', ' + fName;
 
       //Update user list
       UserAPI.addUser(user);
@@ -44,9 +40,9 @@ var GuarioApp = React.createClass({
         displayList: UserAPI.getUsers()
       });
 
-      this.closeModal();
+      this._closeModal();
   },
-  pageNameUpdate: function pageNameUpdate(pageName) {
+  _pageNameUpdate: function _pageNameUpdate(pageName) {
     var list = (pageName === 'Users') ? UserAPI.getUsers() : [];
     this.setState({
       displayList: list,
@@ -60,35 +56,15 @@ var GuarioApp = React.createClass({
       <div className="wrapper">
         <div className="container-fluid">
           <div className="row">
-              <NavigationComponent onPageNameChange={self.pageNameUpdate} />
+              <NavigationComponent onPageNameChange={self._pageNameUpdate} />
             <div className="col-sm-9 col-md-10 main">
               <ListViewComponent list={self.state.displayList} pageName={self.state.pageName} />
               <div className="fab-create">
-                <button disabled={self.state.pageName !== 'Users'} className="btn btn-success fab-btn" type="button" name="button" onClick={self.openModal}><i className="fa fa-plus fa-2x"></i></button>
+                <button disabled={self.state.pageName !== 'Users'} className="btn btn-success fab-btn" type="button" name="button" onClick={self._openModal}><i className="fa fa-plus fa-2x"></i></button>
               </div>
             </div>
           </div>
-          <Modal show={self.state.showModal} onHide={self.closeModal}>
-              <Modal.Header closeButton>
-                <Modal.Title>Add User</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                <form>
-                  <div className="form-group">
-                    <label for="firstName">First Name</label>
-                    <input type="text" className="form-control" id="firstName" placeholder="First Name" ref="firstName" />
-                  </div>
-                  <div className="form-group">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" className="form-control" id="lastName" placeholder="Last Name" ref="lastName" />
-                  </div>
-                </form>
-              </Modal.Body>
-              <Modal.Footer>
-                <button className="btn btn-primary" type="button" name="button" onClick={self.addUser}><i className="fa fa-check"></i> Submit</button>
-
-              </Modal.Footer>
-            </Modal>
+          <AddUserComponent showModal={self.state.showModal} closeModal={self._closeModal} addUser={self._addUser} />
         </div>
       </div>
     );
