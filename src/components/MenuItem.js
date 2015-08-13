@@ -6,7 +6,6 @@ var PureRenderMixin = require('react/addons').addons.PureRenderMixin;
 var MenuItem = React.createClass({
   mixins: [PureRenderMixin],
   _clickHandler: function _clickHandler() {
-    // e.preventDefault();
     this.props.onMenuItemClick();
   },
   getInitialState: function() {
