@@ -1,41 +1,83 @@
-/* Stiziles */
+/*
+ * Base structure
+ */
+ body {
+   background-color: #dddddd;
+ }
 
-html, body {
-  background: #222222;
+
+/*
+ * Global add-ons
+ */
+
+/*
+ * Sidebar
+ */
+
+.sidebar {
+  background-color: #f5f5f5;
+  border-right: 1px solid #000;
+  height: 498px;
 }
 
-/* main */
+/* Sidebar navigation */
+.nav-sidebar {
+  padding-top: 20px;
+}
+
+.nav-sidebar > li > a {
+  /*width: 96%;*/
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+
+
+/*
+ * Main content
+ */
+
+ .wrapper {
+   height: 500px;
+   background-color: #fff;
+   border: 1px solid #000;
+   margin: 10px;
+ }
 
 .main {
-  width: 100%;
-  height: 100%;
-  background: #222222;
-  color: #fff;
+  padding: 10px;
+  position: relative;
 }
 
-.main img {
-  width: 103px;
-  height: 89px;
-  margin-bottom: 10px;
+.list-view {
+  margin-top: 65px;
+  border: 1px solid #000;
+  min-height: 100%;
+}
+
+.list-view > ul {
+  padding-left: 10px;
+}
+
+.list-view > ul > li {
+  margin: 10px 0;
+}
+
+.main .fab-create {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.fab-btn {
+  width: 50px;
+  height: 50px;
   text-align: center;
-}
-
-/* transitions */
-
-.fade-enter {
-  opacity: 0.01;
-  transition: opacity .5s ease-in;
-}
-
-.fade-enter.fade-enter-active {
-  opacity: 1;
-}
-
-.fade-leave {
-  opacity: 1;
-  transition: opacity .5s ease-in;
-}
-
-.fade-leave.fade-leave-active {
-  opacity: 0.01;
+  line-height: 1.33;
+  border-radius: 25px;
+  border-color: transparent;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
