@@ -14,7 +14,7 @@ var MenuItem = React.createClass({
 
   render: function () {
     var self = this,
-      classes = 'fa fa-fw fa-lg ' + this.props.iconClass,
+      classes = 'fa fa-fw fa-lg ' + self.props.iconClass,
       activeClass = self.props.isActive ? 'active' : '';
 
     return (
